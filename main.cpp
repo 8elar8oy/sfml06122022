@@ -43,14 +43,14 @@ int main()
 	RectangleShape pl(Vector2f(800,600));
 	pl.setTexture(&textur);
 	//рокетки
-	RectangleShape rect(batsize);
-	rect.setTexture(&textur1);
-	rect.setPosition(otstup,width/2-40);
-	rect.setFillColor(batcolor1);
+	RectangleShape leftbat(batsize);
+	leftbat.setTexture(&textur1);
+	leftbat.setPosition(otstup,width/2-40);
+	leftbat.setFillColor(batcolor1);
 	RectangleShape rect1(batsize);
-	rect1.setTexture(&textur1);
-	rect1.setPosition(length-otstup,width/2-40);
-	rect1.setFillColor(batcolor2);
+	rightbat.setTexture(&textur1);
+	rightbat.setPosition(length-otstup,width/2-40);
+	rightbat.setFillColor(batcolor2);
 	float leftBаtSpeedY = 0.f;
 	float rightBаtSpeedY = 0.f;
 	//шарик
@@ -73,40 +73,40 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::W))
 		{
 			leftBаtSpeedY = -batSpeed;
-			if (rect.getPosition().y <= 0)
+			if (leftbat.getPosition().y <= 0)
 			{
-				rect.setPosition(otstup, 0);
+				leftbat.setPosition(otstup, 0);
 			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S))
 		{
 			leftBаtSpeedY = batSpeed;
-			if (rect.getPosition().y >= (width-80))
+			if (leftbat.getPosition().y >= (width-80))
 			{
-				rect.setPosition(otstup, width - 80);
+				leftbat.setPosition(otstup, width - 80);
 			}
 
 		}
-		rect.move(0, leftBаtSpeedY);
+		leftbat.move(0, leftBаtSpeedY);
 		leftBаtSpeedY = 0.f;
 		if (Keyboard::isKeyPressed(Keyboard::Up))
 		{
 			rightBаtSpeedY = -batSpeed;
-			if (rect1.getPosition().y <= 0)
+			if (rightbat.getPosition().y <= 0)
 			{
-				rect1.setPosition(length - otstup, 0);
+				rightbat.setPosition(length - otstup, 0);
 			}
 
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 		{
 			rightBаtSpeedY = batSpeed;
-			if (rect1.getPosition().y >= (width - 80))
+			if (rightbat.getPosition().y >= (width - 80))
 			{
-				rect1.setPosition(length-otstup, width - 80);
+				rightbat.setPosition(length-otstup, width - 80);
 			}
 		}
-		rect1.move(0, rightBаtSpeedY);
+		rightbat.move(0, rightBаtSpeedY);
 		rightBаtSpeedY = 0.f;
 		
 		// движение шарика
@@ -119,13 +119,7 @@ int main()
 		{
 			ball_speedy = -ball_speedy;
 		}
-		/*for (int i = 0; i < 79; i++)
-		{
-			if (circle.getPosition().x <= rect.getPosition().x+20 && circle.getPosition().y <= rect.getPosition().y+i || circle.getPosition().x >= rect1.getPosition().x && circle.getPosition().y <= rect1.getPosition().y+i)
-			{ 
-				ball_speedx = -ball_speedx;
-			}
-		}*/
+		
 		
 		
 		
@@ -133,8 +127,8 @@ int main()
 		//отрисовка обьектов
 		window.clear();
 		window.draw(pl);
-		window.draw(rect);
-		window.draw(rect1);
+		window.draw(leftbat);
+		window.draw(rightbat);
 		window.draw(circle);
 		window.display();
 	}
