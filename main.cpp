@@ -47,7 +47,7 @@ int main()
 	leftbat.setTexture(&textur1);
 	leftbat.setPosition(otstup,width/2-40);
 	leftbat.setFillColor(batcolor1);
-	RectangleShape rect1(batsize);
+	RectangleShape rightbat(batsize);
 	rightbat.setTexture(&textur1);
 	rightbat.setPosition(length-otstup,width/2-40);
 	rightbat.setFillColor(batcolor2);
